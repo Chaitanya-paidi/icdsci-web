@@ -430,128 +430,131 @@
         });
     </script>
 
-    <header class="h-[900px] md:h-full text-center text-white bg-blue-900 relative">
-      <div class="flex flex-col md:flex-row relative z-10">
-        <div class="w-full md:w-1/2 md:px-4 py-25">
-          <div class="w-full md:w-1/2">
-            <div class="slideshow-container md:hidden">
-              <div class="mySlides fade">
-                <div class="numbertext">1 / 4</div>
-                <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
-              </div>
+  <header class="h-[950px] md:h-full text-center text-white bg-blue-900 relative">
+    <div class="flex flex-col md:flex-row relative z-10">
 
-              <div class="mySlides fade">
-                <div class="numbertext">2 / 4</div>
-                <img src="barrage.jpeg" style="width: 100%; height: 200px" />
-              </div>
-
-              <div class="mySlides fade">
-                <div class="numbertext">3 / 4</div>
-                <img src="durga.jpeg" style="width: 100%; height: 200px" />
-              </div>
-
-              <div class="mySlides fade">
-                <div class="numbertext">4 / 4</div>
-                <iframe
-                  width="100%"
-                  height="200px"
-                  src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                ></iframe>
-              </div>
-
-              <div style="text-align: center" class="md:hidden">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-              </div>
-            </div>
+      <div class="w-full md:w-[40%] relative overflow-hidden">
+        <div class="slideshow">
+          <div
+            class="slide"
+            style="background-image: url('PSCMR.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('barrage.jpeg'); height: 750px"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('durga.jpeg'); height: 750px"
+          ></div>
+          <div class="slide">
+            <iframe
+              width="100%"
+              height="750px"
+              src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
-
-          <h1 class="text-2xl font-bold t">
-            <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
-            International Conference on <br />
-            Data Science and Computational Business Information Systems <br> (ICDSCI) 2025
-          </h1>
-          <br />
-          <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
-          <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
-          <h3 class="text-lg mb-4">
-            ALL ACCEPTED & PRESENTED papers will be published in <br />
-            <b>SCOPUS indexed SPRINGER PROMS</b>.
-          </h3>
-          <div class="flex justify-center space-x-4 mb-4">
-            <img src="springer.png" alt="Springer" class="h-20 w-20" />
-            <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
-          </div>
-          <p class="mb-2">Submission is now open: Till December 15, 2024.</p>
-          <div class="button-container2"></div>
-          <button
-            class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
-          >
-            Submit Your Paper
-          </button>
         </div>
-        <div class="w-full md:w-1/2 relative overflow-hidden">
-          <div class="slideshow">
-            <div
-              class="slide"
-              style="background-image: url('PSCMR.jpeg'); height: 750px"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('barrage.jpeg'); height: 750px"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('durga.jpeg'); height: 750px"
-            ></div>
-            <div class="slide">
+      </div>
+      <div class="w-full md:w-[60%] md:px-4 py-25">
+        <div class="w-full">
+          <div class="slideshow-container md:hidden">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 4</div>
+              <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 4</div>
+              <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 4</div>
+              <img src="durga.jpeg" style="width: 100%; height: 200px" />
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 4</div>
               <iframe
                 width="100%"
-                height="750px"
+                height="200px"
                 src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
                 title="YouTube video player"
                 frameborder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               ></iframe>
             </div>
+
+            <div style="text-align: center" class="md:hidden">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
           </div>
         </div>
+
+        <h1 class="text-2xl font-bold t">
+          <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+          International Conference on <br />
+          Data Science and Computational <br> Business Information Systems (ICDSCI) 2025
+        </h1>
+        <br />
+        <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+        <h2 class="text-xl font-bold mb-4">Hybrid Mode</h2>
+        <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+        <h3 class="text-lg mb-4">
+          ALL ACCEPTED & PRESENTED papers will be published in <br />
+          <b>SCOPUS indexed SPRINGER</b>.
+        </h3>
+        <div class="flex justify-center space-x-4 mb-4">
+          <img src="springer.png" alt="Springer" class="h-20 w-20" />
+          <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+        </div>
+        <p class="mb-2">Submission is now open: Till December 15, 2024.</p>
+        <div class="button-container2"></div>
+        <button
+          class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+        >
+          Submit Your Paper
+        </button>
       </div>
+      
+    </div>
 
-      <script>
-        let slideIndex = 0;
-        showSlides();
+    <script>
+      let slideIndex = 0;
+      showSlides();
 
-        function showSlides() {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
 
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-          }
-          slideIndex++;
-          if (slideIndex > slides.length) {
-            slideIndex = 1;
-          }
-          for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex - 1].style.display = "block";
-          dots[slideIndex - 1].className += " active";
-          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
         }
-      </script>
-    </header>
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </header>
 
     <div class="mt-1 bg">
       <marquee behavior="" direction=""
@@ -570,55 +573,36 @@
           <p>The International Conference on Data Science and Computational Business Information Systems (ICDSCI) 2025 is a leading event dedicated to exploring advancements in data science and computational business systems. This conference brings together top researchers, practitioners, and industry leaders to share the latest innovations and methodologies. The event will feature a wide range of tracks, including data science techniques, big data technologies, business intelligence, AI applications, and data privacy. Participants will benefit from keynote speeches, technical sessions, and networking opportunities. ICDSCI 2025 aims to foster collaboration, drive technological advancement, and address contemporary challenges in these dynamic fields. </p>
         </div>
 
-        <div class="md:flex justify-evenly p-5">
-          <div class="md:ml-2 md:mt-[100px]">
+        <div class="md:grid grid-cols-2 gap-4 p-2">
+          <!-- First Image -->
+          <div class="flex justify-center items-center">
             <a href="https://www.pscmr.ac.in/" target="_blank">
-              <img
-                src="logo.png"
-                alt="pscmr-logo"
-                class="mb-4 md:ml-[100px]"
-                style="max-width: 100%; height: 160px"
-              />
+              <img src="logo.png" alt="pscmr-logo" class="w-full h-auto" style="max-width: 200px; height: 160px;" />
             </a>
-
-            <p class="text-md text-left md:text-center text-gray-700 font-bold pt-[10px]">
-              Potti Sriramulu Chalavadi Mallikarjuna <br>Rao College of Engineering and <br> Technology (Autonomous), Vijayawada, India
-            </p>
           </div>
-          <div class="md:mt-[80px]">
-            <a
-              href="https://www.cardiffmet.ac.uk/Pages/default.aspx"
-              target="_blank"
-            >
-              <img
-                src="CardiffMet_logo-1.png"
-                alt="js-logo"
-                class="mb-4"
-                style="max-width: 100%; height: 190px"
-              />
+          
+          <!-- Second Image -->
+          <div class="md:ml-[80px] flex justify-center items-center">
+            <a href="https://www.cardiffmet.ac.uk/Pages/default.aspx" target="_blank">
+              <img src="CardiffMet_logo-1.png" alt="cardiff-logo" class="h-auto" style="height: 160px;" />
             </a>
-
-            <p class="text-md md:text-center text-gray-700 ml-3 md:ml-0 font-bold">
-              Cardiff Metropolitan University, UK
-            </p>
           </div>
-          <!-- <div class="md:ml-3 md:mt-[80px]">
-            <a href="https://jacksparrowpublishers.com/" target="_blank">
-              <img
-                src="jslogo.png"
-                alt="js-logo"
-                class="mb-4"
-                style="max-width: 100%; height: 190px"
-              />
+          
+          <!-- Third Image -->
+          <div class="flex justify-center items-center">
+            <a href="https://www.cardiffmet.ac.uk/Pages/default.aspx" target="_blank">
+              <img src="virginIslands.png" alt="virginIslands-logo" class="w-full h-auto" style="max-width: 200px; height: 160px;" />
             </a>
-
-            <p
-              class="text-md md:text-center text-gray-700 m-3 md:m-0 font-bold ml-7 md:ml-0"
-            >
-              Jack Sparrow Publishers
-            </p>
-          </div> -->
+          </div>
+          
+          <!-- Fourth Image -->
+          <div class="md:ml-[80px] flex justify-center items-center">
+            <a href="https://www.cardiffmet.ac.uk/Pages/default.aspx" target="_blank">
+              <img src="baibu.png" alt="baibu-logo" class="w-full h-auto" style="max-width: 200px; height: 160px;" />
+            </a>
+          </div>
         </div>
+        
 
       </div>
     </section>
@@ -743,7 +727,7 @@
                   Manuscript submissions open
                 </td>
                 <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
-                  September 1, 2024
+                  September 15, 2024
                 </td>
               </tr>
               <tr class="bg-white">
@@ -826,7 +810,7 @@
               <tr>
                 <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
                 <td class="border-b border-gray-300 pl-8 px-6 py-4">
-                  September 1, 2024
+                  September 15, 2024
                 </td>
               </tr>
             </tbody>
