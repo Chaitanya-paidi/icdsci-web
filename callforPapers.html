@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICDSCI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+
+      .hover-zoom {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hover-zoom:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICDSCI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICDSCI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICDSCI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+    <header class="h-[900px] md:h-full text-center text-white bg-blue-900 relative">
+      <div class="flex flex-col md:flex-row relative z-10">
+        <div class="w-full md:w-1/2 md:px-4 py-25">
+          <div class="w-full md:w-1/2">
+            <div class="slideshow-container md:hidden">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="durga.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <iframe
+                  width="100%"
+                  height="200px"
+                  src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div style="text-align: center" class="md:hidden">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="text-2xl font-bold t">
+            <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+            International Conference on <br />
+            Data Science and Computational Business Information Systems <br> (ICDSCI) 2025
+          </h1>
+          <br />
+          <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+          <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+          <h3 class="text-lg mb-4">
+            ALL ACCEPTED & PRESENTED papers will be published in <br />
+            <b>SCOPUS indexed SPRINGER PROMS</b>.
+          </h3>
+          <div class="flex justify-center space-x-4 mb-4">
+            <img src="springer.png" alt="Springer" class="h-20 w-20" />
+            <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+          </div>
+          <p class="mb-2">Submission is now open: Till December 15, 2024.</p>
+          <div class="button-container2"></div>
+          <button
+            class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+          >
+            Submit Your Paper
+          </button>
+        </div>
+        <div class="w-full md:w-1/2 relative overflow-hidden">
+          <div class="slideshow">
+            <div
+              class="slide"
+              style="background-image: url('PSCMR.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('barrage.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('durga.jpeg'); height: 750px"
+            ></div>
+            <div class="slide">
+              <iframe
+                width="100%"
+                height="750px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+    <div class="bg-blue-900 text-white text-center p-3">
+      <p class="font-bold text-2xl">ICDSCI 2025 CALL FOR PAPERS</p>
+    </div>
+
+    <div id="conf"></div>
+    <div
+            class="mt-10 m-2 flex flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 lg:space-x-[50px]"
+          >
+          <a href="callforPapers.html#conf"
+          ><button class="bg-blue-900 p-3 w-full md:w-[200px] text-white rounded-lg">
+                
+                About Conference</button></a
+            >
+            <a href="callforPapers.html#objectives"
+              ><button class="bg-blue-900 p-3 w-full md:w-[110px] text-white rounded-lg">Objectives</button></a
+            >
+            <a href="callforPapers.html#outcomes"><button class="bg-blue-900 p-3 w-full md:w-[110px] text-white rounded-lg">Outcomes</button></a>
+            <a href="callforPapers.html#scope"><button class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg">Scope</button></a>
+            <a href="callforPapers.html#impact"><button class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg">Impact</button></a>
+            <a href="specialSessions.html#conference-tracks"><button class="bg-blue-900 p-3 w-full md:w-[180px] text-white rounded-lg">Conference Tracks</button></a>
+            <a href="index.html#indexing"><button class="bg-blue-900 p-3 w-full md:w-[100px] text-white rounded-lg">Indexing</button></a>
+          </div>
+
+    <div class=" text-center text-black p-3 md:p-10" id="objectives">
+      <p class="underline-blue font-bold text-2xl mb-2">
+        <i class="fas fa-info-circle text-blue-700 mr-2"></i>
+        About Conference</p>
+      <p class="text-justify">
+        The International Conference on Data Science and Computational Business Information Systems (ICDSCI) 2025 is a leading event dedicated to exploring advancements in data science and computational business systems. This conference brings together top researchers, practitioners, and industry leaders to share the latest innovations and methodologies. The event will feature a wide range of tracks, including data science techniques, big data technologies, business intelligence, AI applications, and data privacy. Participants will benefit from keynote speeches, technical sessions, and networking opportunities. ICDSCI 2025 aims to foster collaboration, drive technological advancement, and address contemporary challenges in these dynamic fields. 
+      </p>
+    </div>
+
+    <section class="text-black p-3 md:p-10">
+      <p class="underline-blue font-bold text-2xl mb-4 text-center" id="objectives">
+        <i class="fas fa-bullseye text-blue-700 mr-2"></i> <!-- Font Awesome icon -->
+        Objectives
+      </p>
+    
+      <div class="text-mx-auto">
+        <p class="mb-4">
+          The objectives of the International Conference on Data Science and Computational Business Information Systems (ICDSCI) 2025 are framed around advancing knowledge, fostering collaboration, and addressing contemporary challenges in the fields of data science and computational business systems. Here are the key objectives:
+        </p>
+        <ul class="list-disc list-inside space-y-2">
+          
+          <!-- Objective 1 -->
+          <li>
+            <b>Advance Research and Knowledge</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Showcase Innovations: Present the latest research findings, methodologies, and technological advancements in data science and computational business systems.</li>
+              <li>Promote Knowledge Sharing: Facilitate the exchange of cutting-edge ideas and techniques among researchers, practitioners, and academics to push the boundaries of current knowledge.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 2 -->
+          <li>
+            <b>Facilitate Industry Application</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Real-World Solutions: Demonstrate practical applications of data science and computational systems technologies through case studies, real-world examples, and industry presentations.</li>
+              <li>Best Practices: Share industry best practices and success stories to guide organizations in implementing effective data-driven solutions.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 3 -->
+          <li>
+            <b>Foster Collaboration and Networking</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Academic-Industry Partnerships: Encourage collaboration between academia and industry to bridge the gap between research and practical applications.</li>
+              <li>Networking Opportunities: Provide a platform for attendees to network with leading experts, peers, and potential collaborators, fostering professional relationships and future partnerships.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 4 -->
+          <li>
+            <b>Address Emerging Trends and Challenges</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Explore Emerging Technologies: Investigate the impact of emerging technologies such as quantum computing, blockchain, and AI innovations on data science and business systems.</li>
+              <li>Discuss Challenges: Address current challenges in data privacy, cybersecurity, and ethical considerations, and explore solutions and strategies for overcoming them.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 5 -->
+          <li>
+            <b>Enhance Skills and Competencies</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Educational Workshops: Offer workshops, tutorials, and training sessions to enhance attendees’ skills and knowledge in data science and computational business systems.</li>
+              <li>Career Development: Provide resources and insights for career advancement and professional development in these fields.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 6 -->
+          <li>
+            <b>Promote Ethical and Responsible Use</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Ethical Guidelines: Discuss the ethical implications of data science and AI technologies and promote best practices for responsible technology use.</li>
+              <li>Regulatory Compliance: Address data protection regulations and compliance issues to help organizations navigate legal and ethical requirements.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 7 -->
+          <li>
+            <b>Drive Innovation</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Encourage New Ideas: Inspire innovative thinking and problem-solving through presentations on cutting-edge research and emerging trends.</li>
+              <li>Support Tool Development: Highlight new tools and methodologies for data analysis, visualization, and management, encouraging their development and adoption.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 8 -->
+          <li>
+            <b>Support Strategic Decision-Making</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Informed Decision-Making: Provide insights and tools for data-driven decision-making to help organizations make strategic and informed decisions based on the latest research and industry practices.</li>
+              <li>Performance Optimization: Share techniques for evaluating and optimizing business performance through advanced analytics and decision support systems.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 9 -->
+          <li>
+            <b>Strengthen Education and Workforce Development</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>Curriculum Development: Inform the development of educational curricula and training programs based on the latest industry needs and technological advancements.</li>
+              <li>Skill Alignment: Align educational and training programs with the skills and competencies required for future data science and computational systems professionals.</li>
+            </ul>
+          </li>
+    
+          <!-- Objective 10 -->
+          <li>
+            <b>Global Knowledge Exchange</b>
+            <ul class="list-inside space-y-1 ml-5">
+              <li>International Perspectives: Offer a global perspective on data science and computational business systems by bringing together experts from different regions and backgrounds.</li>
+              <li>Cross-Border Collaboration: Facilitate international collaboration and knowledge exchange to address global challenges and opportunities in data science and business systems.</li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </section>
+    
+
+    <section class="text-black p-3 md:p-10">
+      <p class="underline-blue font-bold text-2xl mb-4 text-center">
+        <i class="fas fa-trophy text-blue-700 mr-2"></i>
+        Outcomes
+      </p>
+      <p>
+        The outcomes of the International Conference on Data Science and Computational Business Information Systems (ICDSCI) 2025 are expected to be significant and multifaceted, impacting both the academic community and industry practices. Here’s a detailed overview of the anticipated outcomes:
+      </p>
+      <ul class="list-disc list-inside space-y-6 mt-8">
+        <li>
+          <b>Research Advancements:</b> <br />
+          • Publication of Findings: New research papers, case studies, and methodologies will be published, contributing to the academic literature and providing valuable insights into emerging trends and technologies in data science and computational business systems. <br />
+          • Innovative Solutions: Presentation of novel algorithms, techniques, and technologies that advance the state-of-the-art in data analysis, machine learning, big data technologies, and business systems.
+        </li>
+    
+        <li>
+          <b>Industry Impact:</b> <br />
+          • Implementation of Best Practices: Industry professionals will gain access to best practices, proven methodologies, and innovative solutions that can be implemented to improve business processes, enhance decision-making, and optimize performance. <br />
+          • Technological Adoption: Increased adoption of cutting-edge technologies and tools demonstrated at the conference, leading to improved efficiency and competitive advantage for businesses.
+        </li>
+    
+        <li>
+          <b>Collaboration and Networking:</b> <br />
+          • New Partnerships: Formation of new collaborations and partnerships between academia, industry, and government, facilitating joint research projects, technology development, and practical applications. <br />
+          • Expanded Networks: Strengthened professional networks among attendees, leading to ongoing collaboration, knowledge exchange, and career opportunities.
+        </li>
+    
+        <li>
+          <b>Professional Development:</b> <br />
+          • Enhanced Skills: Attendees will gain new skills and knowledge through workshops, tutorials, and presentations, improving their competencies and advancing their careers in data science and computational business systems. <br />
+          • Career Advancement: Increased opportunities for career development through networking and exposure to industry leaders and emerging trends.
+        </li>
+    
+        <li>
+          <b>Ethical and Regulatory Insights:</b> <br />
+          • Guidelines and Standards: Development and dissemination of ethical guidelines and best practices for the responsible use of data science and AI technologies. <br />
+          • Compliance Strategies: Improved understanding of data protection regulations and compliance strategies, helping organizations navigate legal and ethical requirements.
+        </li>
+    
+        <li>
+          <b>Innovation Promotion:</b> <br />
+          • New Technologies: Introduction and promotion of new technologies and methodologies, leading to innovation in data analysis, visualization, and computational business systems. <br />
+          • Research Translation: Translation of cutting-edge research into practical applications, driving technological progress and addressing real-world challenges.
+        </li>
+    
+        <li>
+          <b>Educational Contributions:</b> <br />
+          • Curriculum Enhancement: Insights from the conference will inform the development of educational curricula and training programs, aligning them with industry needs and technological advancements. <br />
+          • Knowledge Dissemination: Distribution of educational materials, tutorials, and resources to support learning and development in data science and computational systems.
+        </li>
+    
+        <li>
+          <b>Strategic Insights:</b> <br />
+          • Informed Decision-Making: Provision of valuable insights and tools for data-driven decision-making, aiding organizations in strategic planning and operational improvements. <br />
+          • Performance Metrics: Sharing of techniques for evaluating and optimizing business performance, contributing to more effective management and goal-setting.
+        </li>
+    
+        <li>
+          <b>Global Knowledge Exchange:</b> <br />
+          • International Perspectives: Enriched global understanding of data science and computational business systems through diverse perspectives and experiences shared at the conference. <br />
+          • Cross-Border Collaboration: Enhanced international collaboration and knowledge exchange, addressing global challenges and leveraging global opportunities.
+        </li>
+    
+        <li>
+          <b>Long-Term Impact:</b> <br />
+          • Ongoing Research: Continuation of research initiatives and projects sparked by the conference, leading to further advancements and discoveries in the field. <br />
+          • Community Building: Strengthening of the data science and computational business systems community through continued engagement and collaboration among attendees.
+        </li>
+      </ul>
+    </section>
+    
+
+    <section class="bg-white text-black p-5 md:p-10 rounded-lg shadow-md" id="scope">
+      <p class="underline-blue font-bold text-3xl mb-6 text-center">
+        <i class="fas fa-expand-arrows-alt mr-3 text-blue-700"></i>
+        Scope
+      </p>
+      <p class="mb-6">
+        The scope of the International Conference on Data Science and Computational Business Information Systems (ICDSCI) 2025 is extensive and multidimensional, reflecting the conference's comprehensive focus on both foundational and cutting-edge topics within data science and computational business systems. Here’s an outline of the conference scope based on the tracks provided:
+      </p>
+    
+      <div class="space-y-8">
+        <!-- Track 1 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">1. Foundational Data Science Techniques</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Statistical Methods and Data Analysis:</b> Investigate core statistical approaches like exploratory data analysis, hypothesis testing, and regression techniques.</li>
+            <li><b>Machine Learning Algorithms and Techniques:</b> Explore supervised, unsupervised, and reinforcement learning models, their applications, and limitations.</li>
+            <li><b>Deep Learning and Neural Networks:</b> Examine CNNs, RNNs, and transformer models in complex data scenarios.</li>
+            <li><b>Data Mining and Knowledge Discovery:</b> Discuss clustering, association rule mining, and anomaly detection techniques.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 2 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">2. Big Data Technologies</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Big Data Infrastructure and Architectures:</b> Design scalable infrastructure for managing big data.</li>
+            <li><b>Distributed Computing and Cloud-based Solutions:</b> Explore distributed processing and cloud platforms.</li>
+            <li><b>Data Storage and Retrieval:</b> Advancements in storage technologies like NoSQL databases and object storage.</li>
+            <li><b>Real-time Data Processing and Stream Analytics:</b> Focus on real-time processing and stream analytics.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 3 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">3. Business Intelligence and Analytics</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Predictive and Prescriptive Analytics:</b> Predict future trends and make data-driven recommendations.</li>
+            <li><b>Business Data Visualization and Reporting:</b> Tools and techniques for effective visualizations and reports.</li>
+            <li><b>Decision Support Systems:</b> Assist complex decision-making processes with data analysis and modeling.</li>
+            <li><b>Performance Metrics and KPI Analysis:</b> Define and analyze key performance indicators (KPIs).</li>
+          </ul>
+        </div>
+    
+        <!-- Track 4 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">4. Computational Business Systems</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Enterprise Resource Planning (ERP) Systems:</b> Enhance organizational efficiency by integrating core business processes.</li>
+            <li><b>Customer Relationship Management (CRM) Systems:</b> Manage customer interactions and improve business outcomes.</li>
+            <li><b>Supply Chain Management and Optimization:</b> Optimize supply chain processes like inventory management and logistics.</li>
+            <li><b>Financial Systems and Risk Management:</b> Manage financial operations and assess risks using analytics.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 5 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">5. Artificial Intelligence in Business</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>AI-driven Automation and Robotics:</b> Explore the application of AI in automating business processes and robotics for improved efficiency.</li>
+            <li><b>Natural Language Processing (NLP) and Understanding:</b> Discuss techniques for enabling computers to understand and process human language, including sentiment analysis and chatbots.</li>
+            <li><b>Computer Vision and Image Analysis:</b> Investigate AI methods for interpreting and analyzing visual data, including image recognition and video analysis.</li>
+            <li><b>AI Ethics and Governance:</b> Address ethical considerations and governance frameworks for the responsible use of AI technologies.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 6 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">6. Data Privacy and Security</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Data Protection Regulations and Compliance:</b> Explore regulations and compliance requirements for protecting personal data and ensuring privacy.</li>
+            <li><b>Cybersecurity in Data Systems:</b> Discuss strategies and technologies for securing data systems against cyber threats and attacks.</li>
+            <li><b>Privacy-preserving Data Analysis Techniques:</b> Investigate methods for analyzing data while preserving privacy, including differential privacy and secure multi-party computation.</li>
+            <li><b>Risk Management and Incident Response:</b> Examine approaches for managing data security risks and responding to incidents.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 7 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">7. Data Management and Integration</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Data Quality and Cleansing:</b> Discuss techniques for ensuring data accuracy and reliability through data quality and cleansing processes.</li>
+            <li><b>Data Integration and ETL Processes:</b> Explore methods for integrating data from diverse sources and the processes of extraction, transformation, and loading (ETL).</li>
+            <li><b>Metadata Management and Data Governance:</b> Investigate practices for managing metadata and ensuring data governance to support data management efforts.</li>
+            <li><b>Data Warehousing and Data Lakes:</b> Discuss solutions for storing and managing large volumes of structured and unstructured data, including data warehousing and data lakes.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 8 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">8. Emerging Trends and Technologies</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Blockchain for Data Integrity and Security:</b> Explore the use of blockchain technology for enhancing data integrity and security.</li>
+            <li><b>Internet of Things (IoT) and Data Integration:</b> Investigate the integration of data from IoT devices and its implications for data analysis and management.</li>
+            <li><b>Quantum Computing in Data Science:</b> Discuss the potential impact of quantum computing on data science and analytics, including new computational paradigms.</li>
+            <li><b>Augmented Reality (AR) and Virtual Reality (VR) for Data Visualization:</b> Examine innovative applications of AR and VR technologies for visualizing and interacting with data.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 9 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">9. Industry Applications and Case Studies</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Healthcare Analytics and Systems:</b> Explore the application of data science and computational systems in healthcare, including patient data analysis and system integration.</li>
+            <li><b>Financial Services and FinTech Innovations:</b> Discuss innovations and data solutions in financial services and fintech.</li>
+            <li><b>Retail and E-commerce Data Solutions:</b> Investigate data-driven solutions for enhancing retail and e-commerce operations.</li>
+            <li><b>Smart Cities and Urban Analytics:</b> Explore the use of data to improve urban living and infrastructure through smart city initiatives.</li>
+          </ul>
+        </div>
+    
+        <!-- Track 10 -->
+        <div>
+          <h3 class="font-bold text-xl text-blue-700">10. Education and Workforce Development</h3>
+          <ul class="list-disc list-inside mt-3 space-y-3">
+            <li><b>Data Science Education and Training:</b> Educational programs and training opportunities in data science.</li>
+            <li><b>Skills and Competencies for Data Professionals:</b> Identify key skills and competencies for data science professionals.</li>
+            <li><b>Academic-Industry Collaborations:</b> Explore partnerships between academia and industry for advancing research.</li>
+            <li><b>Career Development in Data Science:</b> Strategies for career advancement in data science and computational systems.</li>
+          </ul>
+        </div>
+      </div>
+    
+      <p class="mt-8">
+        The ICDSCI 2025 conference aims to provide a comprehensive exploration of current and emerging topics in data science and computational business information systems. It serves as a platform for professionals and researchers to exchange ideas and showcase innovations.
+      </p>
+    </section>
+    
+
+    <div class="hidden md:block mx-[300px]">
+      <h2 class="text-2xl text-center font-bold mb-4 underline-blue">
+        <i class="fas fa-calendar-alt text-blue-500 mr-2"></i> 
+        Important Dates / Deadlines
+      </h2>
+      <table
+        class="md:min-w-full bg-white shadow-md rounded-lg overflow-hidden"
+        id="dates"
+      >
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-center">
+              Event
+            </th>
+            <th class="bg-blue-900 text-white px-6 py-4 text-center">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Manuscript submissions open
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              September 1, 2024
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Deadline for submissions
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              December 15, 2024
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Under review timeline
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              December 15, 2024 - January 31, 2025
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Notification of acceptance
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              February 05, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Author registration deadline
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              February 06th to March 07th, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Conference Program scheduled
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              March 20th, 21st, 2025
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-center">
+              Final revised manuscript
+            </td>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4 text-center">
+              April 5th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <style>
+        table,
+        th,
+        td {
+          border: 1px solid gray;
+        }
+      </style>
+    </div>
+
+    <div class="md:w-[600px] w-full mx-auto md:p-4 md:hidden">
+      <h2 class="text-2xl text-left font-bold mb-4 underline-blue" id="dates-m">
+        Important Dates / Deadlines
+      </h2>
+
+      <!-- Table 1: Manuscript submissions open -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Manuscript submissions open
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              September 1, 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 2: Deadline for manuscript submissions -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Deadline for manuscript submissions
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              December 15, 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 3: Under review timeline -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Under review timeline
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              December 15, 2024 - January 31, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 4: Notification of acceptance -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Notification of acceptance
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              February 05, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 5: Author registration deadline -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Author registration deadline
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              February 06th to March 07th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 6: Conference program scheduled -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Conference program scheduled
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              March 20th, 21st, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Table 7: Final revised manuscript -->
+      <table class="w-full bg-white shadow-md rounded-lg mb-6">
+        <thead>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">
+              Event
+            </th>
+            <td class="border-b border-gray-300 pr-8 px-6 py-4 text-left">
+              Final revised manuscript
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="bg-blue-900 text-white px-6 py-4 text-left">Date</th>
+            <td class="border-b border-gray-300 pl-8 px-6 py-4">
+              April 5th, 2025
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section class="bg-white text-black p-4 md:p-10 rounded-lg shadow-md" id="impact">
+      <p class="underline-blue font-bold text-3xl mb-6 text-center">
+        <i class="fas fa-chart-line mr-2 text-blue-700"></i>
+        Anticipated Impacts
+      </p>
+      <p class="leading-relaxed mb-6 text-lg">
+        The International Conference on Data Science and Computational Business Information Systems (ICDSCI) 2025 is expected to have several significant impacts across various domains, influencing both the academic community and industry practice. Below is an outline of the anticipated impacts:
+      </p>
+    
+      <ul class="list-decimal list-inside space-y-6 text-gray-800">
+        <li>
+          <b class="text-blue-700">Advancement of Knowledge and Research</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Cutting-Edge Insights:</b> The conference will showcase the latest research findings and technological advancements in data science and computational business systems, contributing to the expansion of knowledge in these fields.</li>
+            <li><b>Innovative Techniques:</b> New methods, algorithms, and technologies presented at the conference will push the boundaries of current possibilities, fostering further research and innovation.</li>
+            <li><b>Cross-Disciplinary Insights:</b> By bringing together experts from diverse fields, the conference will facilitate interdisciplinary learning and integration of ideas across sectors.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Industry Applications and Best Practices</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Enhanced Solutions:</b> Industry practitioners will gain insights into state-of-the-art technologies and methodologies that can be applied to solve real-world problems, leading to improved business processes.</li>
+            <li><b>Case Studies:</b> Real-world case studies will provide practical examples of successful implementations, offering valuable lessons and strategies for industry professionals.</li>
+            <li><b>Benchmarking:</b> Businesses will have the opportunity to benchmark their practices against industry standards and emerging trends, driving improvements and fostering competitive advantage.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Development of Skills and Competencies</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Educational Opportunities:</b> Workshops and tutorials will offer valuable learning experiences for students and professionals, helping them acquire new skills and knowledge.</li>
+            <li><b>Career Advancement:</b> Exposure to cutting-edge research and industry practices will enhance attendees' expertise and career prospects in the data science and computational systems domains.</li>
+            <li><b>Networking:</b> The conference will provide a platform for networking with experts, facilitating collaborations and career development.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Innovation and Technology Adoption</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Emerging Technologies:</b> Discussions on trends such as quantum computing, blockchain, and AI-driven innovations will accelerate the adoption of these technologies in both research and industry.</li>
+            <li><b>Tool Development:</b> The conference will highlight new tools for data analysis, visualization, and management, promoting their integration into existing systems.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Ethical and Regulatory Considerations</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Ethical Guidelines:</b> Presentations on AI ethics and data privacy will contribute to the development of guidelines for responsible technology use.</li>
+            <li><b>Regulatory Compliance:</b> Discussions on data protection regulations will help organizations navigate compliance challenges and implement robust data security measures.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Collaboration and Partnerships</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Academic-Industry Collaboration:</b> The conference will foster partnerships between academia and industry, leading to collaborative projects and the practical application of academic findings.</li>
+            <li><b>Global Networking:</b> By bringing together international experts, the conference will promote cross-border collaboration and knowledge exchange.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Impact on Education and Workforce Development</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Curriculum Enhancement:</b> Conference insights will inform the development of educational programs, ensuring alignment with the latest industry needs and advancements.</li>
+            <li><b>Skill Development:</b> The focus on emerging technologies will guide skill development for future professionals in data science and computational systems.</li>
+          </ul>
+        </li>
+    
+        <li>
+          <b class="text-blue-700">Strategic Decision-Making</b><br />
+          <ul class="list-disc ml-6 mt-2 space-y-3">
+            <li><b>Informed Decisions:</b> Business leaders and policymakers will benefit from insights into data-driven decision-making, enhancing strategic planning and operational efficiency.</li>
+            <li><b>Performance Metrics:</b> The conference will provide methodologies for evaluating business performance and optimizing key performance indicators (KPIs).</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    
+    
+
+    <section class="bg-blue-200 py-12 text-black">
+      <div class="container mx-auto text-center mb-8">
+        <h1 class="text-3xl font-bold underline-blue" id="conf-tracks">
+          <i class="fas fa-stream mr-2 text-blue-700"></i> 
+          Conference Tracks
+        </h1>
+      </div>
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6" id="conference-tracks">
+        <!-- Data Science Techniques -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Data Science Techniques:</h2>
+          <ul class="list-disc ml-5">
+            <li>Statistical Methods and Data Analysis</li>
+            <li>Machine Learning Algorithms and Techniques</li>
+            <li>Deep Learning and Neural Networks</li>
+            <li>Data Mining and Knowledge Discovery</li>
+          </ul>
+        </div>
+        <!-- Big Data Technologies -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Big Data Technologies:</h2>
+          <ul class="list-disc ml-5">
+            <li>Big Data Infrastructure and Architectures</li>
+            <li>Distributed Computing and Cloud-based Solutions</li>
+            <li>Data Storage and Retrieval</li>
+            <li>Real-time Data Processing and Stream Analytics</li>
+          </ul>
+        </div>
+        <!-- Business Intelligence and Analytics -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Business Intelligence and Analytics:</h2>
+          <ul class="list-disc ml-5">
+            <li>Predictive and Prescriptive Analytics</li>
+            <li>Business Data Visualization and Reporting</li>
+            <li>Decision Support Systems</li>
+            <li>Performance Metrics and KPI Analysis</li>
+          </ul>
+        </div>
+        <!-- Computational Business Systems -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Computational Business Systems:</h2>
+          <ul class="list-disc ml-5">
+            <li>Enterprise Resource Planning (ERP) Systems</li>
+            <li>Customer Relationship Management (CRM) Systems</li>
+            <li>Supply Chain Management and Optimization</li>
+            <li>Financial Systems and Risk Management</li>
+          </ul>
+        </div>
+        <!-- Artificial Intelligence in Business -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Artificial Intelligence in Business:</h2>
+          <ul class="list-disc ml-5">
+            <li>AI-driven Automation and Robotics</li>
+            <li>Natural Language Processing (NLP) and Understanding</li>
+            <li>Computer Vision and Image Analysis</li>
+            <li>AI Ethics and Governance</li>
+          </ul>
+        </div>
+        <!-- Data Privacy and Security -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Data Privacy and Security:</h2>
+          <ul class="list-disc ml-5">
+            <li>Data Protection Regulations and Compliance</li>
+            <li>Cybersecurity in Data Systems</li>
+            <li>Privacy-preserving Data Analysis Techniques</li>
+            <li>Risk Management and Incident Response</li>
+          </ul>
+        </div>
+        <!-- Data Management and Integration -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Data Management and Integration:</h2>
+          <ul class="list-disc ml-5">
+            <li>Data Quality and Cleansing</li>
+            <li>Data Integration and ETL Processes</li>
+            <li>Metadata Management and Data Governance</li>
+            <li>Data Warehousing and Data Lakes</li>
+          </ul>
+        </div>
+        <!-- Emerging Trends and Technologies -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Emerging Trends and Technologies:</h2>
+          <ul class="list-disc ml-5">
+            <li>Blockchain for Data Integrity and Security</li>
+            <li>Internet of Things (IoT) and Data Integration</li>
+            <li>Quantum Computing in Data Science</li>
+            <li>AR and VR for Data Visualization</li>
+          </ul>
+        </div>
+        <!-- Industry Applications and Case Studies -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Industry Applications and Case Studies:</h2>
+          <ul class="list-disc ml-5">
+            <li>Healthcare Analytics and Systems</li>
+            <li>Financial Services and FinTech Innovations</li>
+            <li>Retail and E-commerce Data Solutions</li>
+            <li>Smart Cities and Urban Analytics</li>
+          </ul>
+        </div>
+        <!-- Education and Workforce Development -->
+        <div class="bg-white p-6 rounded-lg shadow ml-3 mr-3 hover-zoom">
+          <h2 class="text-2xl font-bold mb-2 text-left underline-green">Education and Workforce Development:</h2>
+          <ul class="list-disc ml-5">
+            <li>Data Science Education and Training</li>
+            <li>Skills and Competencies for Data Professionals</li>
+            <li>Academic-Industry Collaborations</li>
+            <li>Career Development in Data Science and Computational Systems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+     
+    <footer class="bg-blue-900 py-6 text-center text-white">
+      <p>
+        &copy; 2025 International Conference on Data Science and Computational
+        Intelligence. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

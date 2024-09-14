@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICDSCI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: rgb(34 197 94 / var(--tw-bg-opacity));
+      }
+      .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: slideShow 12s infinite;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .slide:nth-child(2) {
+        animation-delay: 3s;
+      }
+
+      .slide:nth-child(3) {
+        animation-delay: 6s;
+      }
+
+      .slide:nth-child(4) {
+        animation-delay: 9s;
+      }
+
+    
+      @keyframes slideShow {
+        0% { opacity: 1; }
+        33% { opacity: 1; }
+        33.33% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+    
+      .button-container {
+        margin-top: 2.5rem; /* mt-10 */
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .button-container button {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+        /* padding: 0.75rem 1.5rem; */
+        padding: 15px;
+        font-size: 1.125rem;
+        font-weight: 300;
+        border: none;
+        border-radius: 0.375rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+    
+      .button-container button:hover {
+        background-color: gray;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+    
+      .button-container button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    
+      .tab button {
+        background-color: gray;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        margin: 0 5px;
+        transition: 0.3s;
+        font-size: 17px;
+        flex: 1;
+      }
+    
+      .tab button:hover {
+        background-color: #ddd;
+      }
+    
+      .tab button.active {
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        color: white;
+      }
+    
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
+    
+      .underline-blue {
+        text-decoration: underline;
+        text-decoration-color: blue;
+      }
+
+      .map-container {
+          height: 100%;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    
+      .animate-fadeIn {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+      }
+
+      /* Remove Next & Previous buttons */
+      .prev, .next {
+        display: none;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+    </style>
+  </head>
+  <body class="bg-white text-black text-justify">
+    <nav class="fixed w-full bg-gray-50 text-black py-3 z-50">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <img src="springer.png" alt="Springer Logo" class="h-10 mr-2" />
+          <a href="#" class="text-2xl font-bold">
+            <span class="bg-blue-900 text-white px-2 py-1 rounded">ICDSCI</span> 2025
+          </a>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+          <li class="relative group">
+            <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+              Call for Papers
+              <svg class="ml-1 w-4 h-4 fill-current text-black group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <ul class="absolute left-0 mt-2 w-48 bg-gray-100 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible">
+              <li><a href="callforPapers.html#conf" class="block px-4 py-2 hover:bg-blue-100">About ICDSCI</a></li>
+              <li><a href="callforPapers.html#dates" class="block px-4 py-2 hover:bg-blue-100">Important Dates</a></li>
+              <li><a href="callforPapers.html#scope" class="block px-4 py-2 hover:bg-blue-100">Scope</a></li>
+              <li><a href="callforPapers.html#conf-tracks" class="block px-4 py-2 hover:bg-blue-100">Conference Tracks</a></li>
+            </ul>
+          </li>
+          <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+          <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+          <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+          <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+          <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+          <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-blue-400 focus:outline-none" id="menu-button">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <ul class="md:hidden flex flex-col space-y-2 px-4 pt-2 pb-4 bg-gray-100 hidden" id="mobile-menu">
+        <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+        <li>
+          <a href="callforPapers.html" class="flex items-center hover:text-blue-400">
+            Call for Papers
+            <svg class="ml-1 w-4 h-4 fill-current text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <ul class="pl-4 mt-2 space-y-2">
+            <li><a href="callforPapers.html#conf" class="text-blue-400">About ICDSCI</a></li>
+            <li><a href="callforPapers.html#dates-m" class="text-blue-400">Important Dates</a></li>
+            <li><a href="callforPapers.html#scope" class="text-blue-400">Scope</a></li>
+            <li><a href="callforPapers.html#conf-tracks" class="text-blue-400">Conference Tracks</a></li>
+          </ul>
+        </li>
+        <li><a href="indexing.html" class="hover:text-blue-400">Indexing</a></li>
+        <li><a href="committees.html" class="hover:text-blue-400">Committees</a></li>
+        <li><a href="registration.html" class="hover:text-blue-400">Registration</a></li>
+        <li><a href="sponsors.html" class="hover:text-blue-400">Sponsors</a></li>
+        <li><a href="specialSessions.html" class="hover:text-blue-400">Special Sessions</a></li>
+        <li><a href="contactus.html" class="hover:text-blue-400">Contact</a></li>
+      </ul>
+    </nav>
+    <script>
+      document
+        .getElementById("menu-button")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+
+    <header class="h-[900px] md:h-full text-center text-white bg-blue-900 relative">
+      <div class="flex flex-col md:flex-row relative z-10">
+        <div class="w-full md:w-1/2 md:px-4 py-25">
+          <div class="w-full md:w-1/2">
+            <div class="slideshow-container md:hidden">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="PSCMR.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="barrage.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="durga.jpeg" style="width: 100%; height: 200px" />
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <iframe
+                  width="100%"
+                  height="200px"
+                  src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <div style="text-align: center" class="md:hidden">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+            </div>
+          </div>
+
+          <h1 class="text-2xl font-bold t">
+            <img class="md:pt-[100px]" src="autonomous.jpg" alt="" /> <br />
+            International Conference on <br />
+            Data Science and Computational Business Information Systems <br> (ICDSCI) 2025
+          </h1>
+          <br />
+          <h2 class="text-2xl mb-2">March 20-21, 2025</h2>
+          <h2 class="text-xl font-bold mb-4">Conference Proceedings</h2>
+          <h3 class="text-lg mb-4">
+            ALL ACCEPTED & PRESENTED papers will be published in <br />
+            <b>SCOPUS indexed SPRINGER PROMS</b>.
+          </h3>
+          <div class="flex justify-center space-x-4 mb-4">
+            <img src="springer.png" alt="Springer" class="h-20 w-20" />
+            <!-- <img src="bg2.jpg" alt="" class="h-20 w-20" /> -->
+          </div>
+          <p class="mb-2">Submission is now open: Till December 15, 2024.</p>
+          <div class="button-container2"></div>
+          <button
+            class="bg-gray-50 text-black px-4 py-2 rounded hover:bg-gray-300 mb-5"
+          >
+            Submit Your Paper
+          </button>
+        </div>
+        <div class="w-full md:w-1/2 relative overflow-hidden">
+          <div class="slideshow">
+            <div
+              class="slide"
+              style="background-image: url('PSCMR.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('barrage.jpeg'); height: 750px"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url('durga.jpeg'); height: 750px"
+            ></div>
+            <div class="slide">
+              <iframe
+                width="100%"
+                height="750px"
+                src="https://www.youtube.com/embed/hD1NzZC11YM?si=4tAcGqFe9OPwiu8X"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+      </script>
+    </header>
+
+    <div class="mt-1 bg">
+      <marquee behavior="" direction=""
+        >A virtual meeting is available for all registered authors who intend to
+        submit their work but are unable to attend the conference.</marquee
+      >
+    </div>
+
+<div class="bg-blue-900 text-white text-center p-3" id="about-pscmr">
+    <p class="font-bold text-2xl">ABOUT PSCMR</p>
+</div>
+<p class="m-10 text-justify leading-relaxed">
+    <strong>Potti Sriramulu Chalavadi Mallikarjuna Rao College of Engineering and Technology (PSCMRCET)</strong> was started in the year 2008, under the aegis of, more than hundred years old, Sri Kanyaka Parameswari Vissamsetti Venkataratnam Hindu High Schools Committee (<strong>SKPVVHHSC – Established in 1906</strong>), by a group of philanthropists belonging to Vijayawada. PSCMR College of Engineering and Technology offers <strong>B. Tech, MBA, M Tech, and MCA programmes</strong>. PSCMRCET aims to impart quality education supported by societal responsiveness fostering holistic development of its students.
+    <br><br>
+    The mission of the college is to impart quality and value-based technology and management education relevant to contemporary corporate and societal needs through continuous learning, societal responsiveness supported by strategic partnerships with industry and academia. At PSCMRCET, education revolves around providing a multidimensional development programme to its students, ameliorating their interpersonal skills and corporate etiquette, thereby resulting in accelerated professional growth.
+    <br><br>
+    The college aspires to promote leadership through societal responsiveness and excellence in technology and management education. With a Governing Body consisting of <strong>Three Former Vice Chancellors and representatives from I.T. and Core industries</strong> – The TCS, Infosys, H-Bots, Eurth Techtronics, Galaxe Solutions Inc., Efftronics, Govt. Water Resource Dept., Athena power, Price Water, Sesha Sai Knittings, Minerva Group of Hotels – PSCMRCET continues to be rated as one of the leading technical colleges in the capital region of Andhra Pradesh.
+    <br><br>
+    The academic programmes that are offered in both Engineering and Management are highly regarded. The institute is known for imparting high-quality professional education and training in an atmosphere of discipline. All the stakeholders work towards fulfilling this mission, shaping our students into people who can play an effective role in the development of a knowledge society.
+    <br><br>
+    The college has been committed to the vision of making a significant contribution to a highly advanced technological society with profound human values by sending forth students as people of unparalleled expertise and a high sense of ethical values. Beyond curriculum topics on niche technologies are being taken care of by inviting established expert resource persons from industry and academia.
+    <br><br>
+    <strong>A.P. State Skill Development Council</strong> has conducted more than 151 such training programs in the last three years. The college is committed to providing internships to all the students, evident from the fact that the college received an award from the AICTE for the maximum number of internships in the southern region through Internshala.
+    <br><br>
+    With an ardent commitment to helping students become perfect wholesome personalities, the College envisages a campus that promotes healthy interaction between faculty and students and among the students. We have a well-structured student counseling system to meet the noble objective of team spirit and cooperative learning.
+    <br><br>
+    Extra and co-curricular activities are sincerely encouraged through different on-campus clubs and committees. There is a PSCMR Toastmasters club, Chess Club, Roteract club, Music Club in addition to the student chapters of esteemed professional bodies like the Institution of Engineers, Computer Society of India, Institution of Electronics and Telecommunication Engineers.
+    <br><br>
+    Participation of students in Project expos, Hackathons, Research paper Submission, sports, and games at inter and intra-college levels is highly appreciated and encouraged. Students are reimbursed with travel expenses and registration fees. All the activities on the campus are meticulously planned and executed by only the students under the mentorship of the experienced faculty. Teaching staff are sponsored to FDPs and Seminars, and non-teaching staff too are sent to attend skill up-gradation programs with financial aid.
+    <br><br>
+    PSCMR College of Engineering and Technology has become synonymous with ultra-modern learning and the best placements. In a short span of time, the college has emerged as one of the prestigious educational institutions in this locality. Students from all parts of the state are ambitious to see themselves in this institution. The fact that more than <strong>67% of our students are girls</strong> is a testimony to the faith and trust of the parents in the institution’s strict and no-compromise attitude in discipline matters.
+</p>
+
+<div class="bg-blue-900 text-white text-center p-3" id="about-ds">
+    <p class="font-bold text-2xl">ABOUT Data Science</p>
+</div>
+<p class="m-10 text-justify leading-relaxed">
+    With the advent of IoT (Internet of Things) and Industry 4.0, the volume of data is growing at an exponential rate. Given the massive amount of data that is produced, it has led to the matured discipline of Data Science that involves collection, visualization, processing, and modeling of large and complex data sets from different domains and sources.
+    <br><br>
+    Data science is an essential part of many industries today, and its popularity has grown over the years. Companies have started implementing data science techniques to grow their business and increase customer satisfaction. Its immense popularity has increased the demanding interest among students to choose it as a career option.
+    <br><br>
+    <strong>Data Science</strong> is an emerging area of Computer Science and Engineering (CSE). The Department of CSE-Data Science was established in the year 2022 with an annual intake of 60 students. The P.G program in Data science was established in the year 2022 with an annual intake of 18 students.
+    <br><br>
+    <strong>BTech CSE (Data Science)</strong> is a 4-year undergraduate level course designed for you to build a distinctive career in analytical and leadership roles in various sectors. The course is new and trending, with a perfect blend of machine learning, big data analytics, and statistics, helping students gain experience in solving problems with real-world data.
+    <br><br>
+    This course also gives importance to areas like big data analytics, fuzzy technologies, and artificial neural networks. It helps students in getting ready with skills to perform decisions that are based on data analysis. Throughout the duration of the programme, the students are taught how to amalgamate business knowledge, tools, and statistics to generate business value in creative ways.
+    <br><br>
+    <strong>Career Prospective for Data Science Students:</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Data Analyst</li>
+        <li>Data Specialist</li>
+        <li>Data Scientist</li>
+        <li>Data Engineer</li>
+        <li>Data Architect</li>
+        <li>Data Consultant</li>
+    </ul>
+    <br><br>
+    <strong class="m-5">Top 10 Data Science Companies:</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Accenture</li>
+        <li>Databricks</li>
+        <li>OpenText</li>
+        <li>Splunk</li>
+        <li>Unified</li>
+        <li>Teradata</li>
+        <li>Oracle</li>
+        <li>Sisense</li>
+        <li>NVIDIA</li>
+        <li>Sumo Logic</li>
+    </ul>
+    <br><br>
+    <strong class="m-5">Highlights:</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Campus Recruitment by ORACLE and other reputed companies.</li>
+        <li>Well Equipped Computer Labs with Latest Technologies.</li>
+        <li>MOU With IIT-Bombay for Spoken Tutorial: To Impart Training on Open Source Technologies for all Engineering Streams.</li>
+        <li>The department encourages Entrepreneur Skill Development among students in Collaboration with ESDA-New Delhi.</li>
+        <li>Internships with Internshala.com.</li>
+        <li>Association with International Professional Bodies: IEEE, CSI, CII, ACM, ISTE, IETE, IAENG, IASA & IEI.</li>
+        <li>Soft Skills & CRT (Campus Recruitment Training) Programs from IInd Year B.Tech Onwards.</li>
+        <li>Training Students & Faculty on Latest Technologies by Workshops & Seminars from Industry People and IIT Faculty.</li>
+        <li>Industrial Visits to students to introduce forthcoming Technologies.</li>
+        <li>Strong ALUMNI Network of PAW [PSCMRCET-Alumni Wing].</li>
+    </ul>
+</p>
+
+<div class="bg-blue-900 text-white text-center p-3" id="about-mca">
+    <p class="font-bold text-2xl">ABOUT MCA</p>
+</div>
+<p class="m-10 text-justify leading-relaxed">
+    <strong>Master of Computer Applications (MCA)</strong> is a two-year professional post-graduate course for candidates wanting to delve deeper into the world of Computer Application development with the help of learning modern programming languages. The programme is a blend of both theoretical and practical knowledge, providing in-depth knowledge of the various computer languages and IT applications.
+    <br><br>
+    The Department has excellent learning facilities which include a Seminar Hall, Department Library, and a dedicated Computer Lab. Faculty members are given various opportunities to attend workshops, short-term courses, seminars, and conferences for updating knowledge, to cope with the continuous changes and challenges in the field of Computer Science and its applications.
+    <br><br>
+    <strong>Why MCA in PSCMRCET?</strong>
+    <ul class="list-disc list-inside space-y-6 p-8">
+        <li>Hands-on Curriculum designed by experts from academia and industry, taught by Quality Faculty Members.</li>
+        <li>More emphasis on the latest programming languages and tools to develop better and faster applications.</li>
+        <li>Enhancing students’ capabilities as per the career requirements and providing necessary placement assistance.</li>
+        <li>Specially organized Workshops, Webinars, and Guest Lectures by Industry experts to provide the latest Industry insights.</li>
+        <li>Professional enhancement Program focusing on aptitude, reasoning, soft skills, and interviewing skills of the student.</li>
+    </ul>
+</p>
+
+<footer class="bg-blue-900 py-6 text-center text-white">
+  <p>
+    &copy; 2025 International Conference on Data Science and Computational
+    Intelligence. All rights reserved.
+  </p>
+</footer>
+  </body>
+  </html>
